@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список закупок</title>
+</head>
+<body>
+    <h1>Список закупок</h1>
+    <a href="{{ url_for('add_purchase') }}">Добавить закупку</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>ID</th>
+            <th>Тип</th>
+            <th>Название</th>
+            <th>Цена за единицу</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+            <th>Дата</th>
+            <th>Действия</th>
+        </tr>
+        {% for p in purchases %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.type_of_purchase }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price_per_unit }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>{{ p.total_amount }}</td>
+            <td>{{ p.date }}</td>
+            <td>
+                <a href="{{ url_for('edit_purchase', id=p.id) }}">Изменить</a>
+                <form action="{{ url_for('delete_purchase', id=p.id) }}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Удалить?')">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

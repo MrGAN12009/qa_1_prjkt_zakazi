@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if action == 'add' %}Добавить{% else %}Изменить{% endif %} закупку</title>
+</head>
+<body>
+    <h1>{% if action == 'add' %}Добавить{% else %}Изменить{% endif %} закупку</h1>
+    <form method="post">
+        <label>Тип закупки: <input name="type_of_purchase" value="{{ purchase.type_of_purchase if purchase else '' }}" required></label><br>
+        <label>Название: <input name="name" value="{{ purchase.name if purchase else '' }}" required></label><br>
+        <label>Цена за единицу: <input name="price_per_unit" type="number" step="0.01" value="{{ purchase.price_per_unit if purchase else '' }}" required></label><br>
+        <label>Количество: <input name="quantity" type="number" step="0.01" value="{{ purchase.quantity if purchase else '' }}" required></label><br>
+        <label>Дата: <input name="date" type="date" value="{{ purchase.date if purchase else '' }}" required></label><br>
+        <button type="submit">Сохранить</button>
+        <a href="{{ url_for('index') }}">Отмена</a>
+    </form>
+</body>
+</html>

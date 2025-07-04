@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/daniil/Рабочий стол/zerocoder/qa_1/venv/bin/python3" "$0" "$@"
+'''exec' "/home/daniil/Рабочий стол/zerocoder_prjkts_for_practics/venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
